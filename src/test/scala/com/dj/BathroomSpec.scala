@@ -26,10 +26,10 @@ class BathroomSpec extends FlatSpec with Matchers {
 
     2 should ===(bathroom.numberOfUrinals)
 
-    false should ===(bathroom.getUrinalByPosition(1).get.hasLeftNeighbor)
+    false should ===(bathroom.getUrinalByPosition(1).get.haveLeftNeighbor)
     bathroom.getUrinalByPosition(1).get.rightNeighbor === (bathroom.getUrinalByPosition(2).get)
     bathroom.getUrinalByPosition(2).get.leftNeighbor === (bathroom.getUrinalByPosition(1)).get
-    false should ===(bathroom.getUrinalByPosition(2).get.hasRightNeighbor)
+    false should ===(bathroom.getUrinalByPosition(2).get.haveRightNeighbor)
 
   }
 
@@ -39,12 +39,12 @@ class BathroomSpec extends FlatSpec with Matchers {
 
     3 should ===(bathroom.numberOfUrinals)
 
-    bathroom.getUrinalByPosition(1).get.hasLeftNeighbor should ===(false)
+    bathroom.getUrinalByPosition(1).get.haveLeftNeighbor should ===(false)
     bathroom.getUrinalByPosition(1).get.rightNeighbor.get should ===(bathroom.getUrinalByPosition(2).get)
     bathroom.getUrinalByPosition(2).get.leftNeighbor.get should ===(bathroom.getUrinalByPosition(1).get)
     bathroom.getUrinalByPosition(2).get.rightNeighbor.get should ===(bathroom.getUrinalByPosition(3).get)
     bathroom.getUrinalByPosition(3).get.leftNeighbor.get should ===(bathroom.getUrinalByPosition(2).get)
-    bathroom.getUrinalByPosition(3).get.hasRightNeighbor should ===(false)
+    bathroom.getUrinalByPosition(3).get.haveRightNeighbor should ===(false)
 
   }
 
@@ -54,14 +54,14 @@ class BathroomSpec extends FlatSpec with Matchers {
 
     4 should ===(bathroom.numberOfUrinals)
 
-    bathroom.getUrinalByPosition(1).get.hasLeftNeighbor should ===(false)
+    bathroom.getUrinalByPosition(1).get.haveLeftNeighbor should ===(false)
     bathroom.getUrinalByPosition(1).get.rightNeighbor.get should ===(bathroom.getUrinalByPosition(2).get)
     bathroom.getUrinalByPosition(2).get.leftNeighbor.get should ===(bathroom.getUrinalByPosition(1).get)
     bathroom.getUrinalByPosition(2).get.rightNeighbor.get should ===(bathroom.getUrinalByPosition(3).get)
     bathroom.getUrinalByPosition(3).get.leftNeighbor.get should ===(bathroom.getUrinalByPosition(2).get)
     bathroom.getUrinalByPosition(3).get.rightNeighbor.get should ===(bathroom.getUrinalByPosition(4).get)
     bathroom.getUrinalByPosition(4).get.leftNeighbor.get should ===(bathroom.getUrinalByPosition(3).get)
-    bathroom.getUrinalByPosition(4).get.hasRightNeighbor should ===(false)
+    bathroom.getUrinalByPosition(4).get.haveRightNeighbor should ===(false)
 
   }
 
@@ -72,7 +72,7 @@ class BathroomSpec extends FlatSpec with Matchers {
     0 should ===(bathroom.numberOfUrinals)
   }
 
-  "Bathroom" should "not have an available urinal when only one occupied" in {
+  "Bathroom" should "doesNot have an available urinal when only one occupied" in {
 
     val bathroom: Bathroom = new Bathroom(1)
     bathroom.getUrinalByPosition(1).get.status = Occupied

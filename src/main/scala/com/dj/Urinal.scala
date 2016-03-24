@@ -27,32 +27,34 @@ class Urinal {
     this.status == Occupied
   }
 
-  def hasLeftNeighbor: Boolean = {
+  def haveLeftNeighbor: Boolean = {
     leftNeighbor.isDefined
   }
 
-  def hasRightNeighbor: Boolean = {
+  private def doesNot(u: Boolean):Boolean = { !(u) }
+
+  def haveRightNeighbor: Boolean = {
     rightNeighbor.isDefined
   }
 
-  private def noLeft: Boolean = {
-    leftNeighbor.isEmpty || leftNeighbor.get.isOccupied
+  private def noLeftOrOccupied: Boolean = {
+     doesNot(haveLeftNeighbor) || leftNeighbor.get.isOccupied
   }
 
-  private def noRight: Boolean = {
-    rightNeighbor.isEmpty || rightNeighbor.get.isOccupied
+  private def noRightOrOccupied: Boolean = {
+    doesNot(haveRightNeighbor) || rightNeighbor.get.isOccupied
   }
 
   private def isMiddlePositionAndAvailable: Boolean = {
-    return noLeft || noRight
+    return noLeftOrOccupied || noRightOrOccupied
   }
 
   private def isFirstPositionAndAvailable: Boolean = {
-    !hasRightNeighbor && available
+    doesNot(haveRightNeighbor) && available
   }
 
   private def isLastPositionAndAvailable: Boolean = {
-    !hasLeftNeighbor && available
+    doesNot(haveLeftNeighbor) && available
   }
 
   private def available: Boolean = {

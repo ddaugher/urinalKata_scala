@@ -23,30 +23,30 @@ class UrinalSpec extends FlatSpec with Matchers {
     false should === (urinal.isAvailable)
   }
 
-  "Urinal" should "not have a left neighbor by default" in {
+  "Urinal" should "doesNot have a left neighbor by default" in {
     val urinal: Urinal = new Urinal
 
-    false should === (urinal.hasLeftNeighbor)
+    false should === (urinal.haveLeftNeighbor)
   }
 
-  "Urinal" should "not have a right neighbor by default" in {
+  "Urinal" should "doesNot have a right neighbor by default" in {
     val urinal: Urinal = new Urinal
 
-    false should === (urinal.hasRightNeighbor)
+    false should === (urinal.haveRightNeighbor)
   }
 
   "Urinal" should "have left neighbor when created" in {
     val urinal: Urinal = new Urinal(2)
     urinal.leftNeighbor = Option(new Urinal(1))
 
-    true should === (urinal.hasLeftNeighbor)
+    true should === (urinal.haveLeftNeighbor)
   }
 
   "Urinal" should "have right neighbor when created" in {
     val urinal: Urinal = new Urinal(1)
     urinal.rightNeighbor = Option(new Urinal(2))
 
-    true should === (urinal.hasRightNeighbor)
+    true should === (urinal.haveRightNeighbor)
   }
 
   "Urinal" should "be considered occupied when an available urinal, with an occupied left and right neighbor exists" in {
